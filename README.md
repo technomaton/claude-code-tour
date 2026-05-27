@@ -55,6 +55,17 @@ cd raw-docs && cat urls.txt | xargs -n1 -P8 ./download.sh
 
 Vite + React 19 + Tailwind v4 + react-markdown + remark-gfm + rehype-raw + Fuse.js.
 
+## Config builders
+
+Visual editors for Claude Code config files at `#builders`. Each builder shows a form on the left and a live preview on the right — copy the result or download it as a file.
+
+- `#builders/hook` — `hooks` block for `settings.json` (events, matchers, shell commands or MCP tools)
+- `#builders/skill` — full `SKILL.md` with frontmatter, when-to-use bullets, and instructions body
+- `#builders/settings` — full `~/.claude/settings.json` with model, bash allow/deny lists (with presets), and env vars
+- `#builders/slash-command` — `.claude/commands/<name>.md` with description, allowed tools, and model override
+
+State stays in your browser; nothing is uploaded.
+
 ## License
 
 Documentation content is © Anthropic, under their terms. The tour shell (code in this repo) is MIT.

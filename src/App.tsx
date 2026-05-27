@@ -10,6 +10,7 @@ import Markdown from "./components/Markdown";
 import TourNav from "./components/TourNav";
 import SearchOverlay from "./components/SearchOverlay";
 import Welcome from "./components/Welcome";
+import Builders from "./builders/Builders";
 
 // Build the search index once on module load
 buildIndex(allRaw(), SLUG_TO_ID);
@@ -77,7 +78,7 @@ export default function App() {
   useEffect(() => {
     writeHash(activeId);
     window.scrollTo({ top: 0, behavior: "instant" });
-    if (activeId) progress.setLast(activeId);
+    if (activeId && !activeId.startsWith("builders")) progress.setLast(activeId);
   }, [activeId]);
 
   // Keyboard shortcuts: "/" to open search, "j/k" for next/prev
@@ -119,6 +120,8 @@ export default function App() {
 
   const activeItem = activeId ? getItem(activeId) : undefined;
   const readCount = Object.keys(snap.read).length;
+  const isBuildersRoute =
+    activeId === "builders" || activeId.startsWith("builders/");
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -157,7 +160,9 @@ export default function App() {
 
         {/* Main */}
         <main className="flex-1 min-w-0 px-4 sm:px-8 lg:px-12 py-8">
-          {!activeId || !activeItem ? (
+          {isBuildersRoute ? (
+            <Builders />
+          ) : !activeId || !activeItem ? (
             <Welcome
               readCount={readCount}
               lastItemId={snap.lastItemId}
