@@ -12,6 +12,7 @@ import SearchOverlay from "./components/SearchOverlay";
 import Welcome from "./components/Welcome";
 import DecisionTree from "./decision-tree/DecisionTree";
 import Builders from "./builders/Builders";
+import Wizard from "./wizard/Wizard";
 
 // Build the search index once on module load
 buildIndex(allRaw(), SLUG_TO_ID);
@@ -130,6 +131,7 @@ export default function App() {
   const readCount = Object.keys(snap.read).length;
   const isDecisionTree = activeId === "start" || activeId.startsWith("start/");
   const isBuildersRoute = activeId === "builders" || activeId.startsWith("builders/");
+  const isWizard = activeId === "wizard" || activeId.startsWith("wizard/");
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -170,6 +172,8 @@ export default function App() {
         <main className="flex-1 min-w-0 px-4 sm:px-8 lg:px-12 py-8">
           {isDecisionTree ? (
             <DecisionTree />
+          ) : isWizard ? (
+            <Wizard />
           ) : isBuildersRoute ? (
             <Builders />
           ) : !activeId || !activeItem ? (

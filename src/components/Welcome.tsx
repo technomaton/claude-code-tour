@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, Map, Sparkles, Target, Wrench } from "lucide-react";
+import { ArrowRight, BookOpen, Map, Sparkles, Target, Wand2, Wrench } from "lucide-react";
 import { CATEGORIES, TOTAL_ITEMS } from "../manifest";
 
 interface Props {
@@ -83,6 +83,34 @@ export default function Welcome({
         </span>
         <ArrowRight className="shrink-0 w-5 h-5 text-brand-600 dark:text-brand-300
                                 group-hover:translate-x-0.5 transition-transform" />
+      </a>
+
+      {/* FEATURE: setup-wizard — guided setup CTA */}
+      <a
+        href="#wizard"
+        className="mt-3 flex items-center gap-4 p-5 rounded-xl
+                   border border-zinc-200 dark:border-zinc-800
+                   bg-white dark:bg-zinc-900
+                   hover:border-brand-400 dark:hover:border-brand-600
+                   hover:shadow-md transition-all group"
+      >
+        <span className="shrink-0 w-12 h-12 rounded-full
+                         bg-brand-100 dark:bg-brand-900/40
+                         text-brand-600 dark:text-brand-300
+                         inline-flex items-center justify-center">
+          <Wand2 className="w-6 h-6" />
+        </span>
+        <span className="flex-1">
+          <span className="block font-semibold text-zinc-900 dark:text-zinc-50">
+            Set up Claude Code
+          </span>
+          <span className="block text-sm text-zinc-600 dark:text-zinc-400 mt-0.5">
+            Guided 7-step wizard generates a starter <code className="font-mono text-xs">.claude/</code> config ZIP for your project.
+          </span>
+        </span>
+        <ArrowRight className="shrink-0 w-5 h-5 text-zinc-400
+                                group-hover:text-brand-500 group-hover:translate-x-0.5
+                                transition-all" />
       </a>
 
       {/* FEATURE: config-builders */}

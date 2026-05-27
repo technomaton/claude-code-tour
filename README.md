@@ -68,6 +68,26 @@ enforcement, enterprise, background tasks, just exploring) and you get:
 Lives under `src/decision-tree/`. Use cases are data in `src/decision-tree/useCases.ts` —
 each `doc.id` is cross-checked against `src/manifest.ts`.
 
+## Setup wizard
+
+A guided 7-step flow at `#wizard` that produces a downloadable starter
+`.claude/` config tailored to your project:
+
+1. **Intro** — pick your OS
+2. **Install** — the exact install command for your OS, with a Copy button
+3. **First session** — `cd` + `claude` walkthrough
+4. **CLAUDE.md** — form (project type, languages, package manager, commands,
+   conventions) with **live markdown preview**
+5. **settings.json** — model radio, Bash allow/deny lists, hooks toggles,
+   env vars, with **live JSON preview**
+6. **Extras** — optional `/review` slash-command
+7. **Done** — one-click download of `claude-starter.zip` (CLAUDE.md +
+   `.claude/settings.json` + `.claude/commands/review.md`)
+
+State is persisted to `localStorage` (`cct-wizard-v1`) so you can resume.
+ZIP generation uses [jszip](https://stuk.github.io/jszip/) entirely
+client-side — no server, no upload.
+
 ## Config builders
 
 Visual editors for Claude Code config files at `#builders`. Each builder shows a form on the left and a live preview on the right — copy the result or download it as a file.
