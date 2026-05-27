@@ -11,6 +11,7 @@ import TourNav from "./components/TourNav";
 import SearchOverlay from "./components/SearchOverlay";
 import Welcome from "./components/Welcome";
 import DecisionTree from "./decision-tree/DecisionTree";
+import Builders from "./builders/Builders";
 
 // Build the search index once on module load
 buildIndex(allRaw(), SLUG_TO_ID);
@@ -78,7 +79,14 @@ export default function App() {
   useEffect(() => {
     writeHash(activeId);
     window.scrollTo({ top: 0, behavior: "instant" });
-    if (activeId) progress.setLast(activeId);
+    if (
+      activeId &&
+      !activeId.startsWith("builders") &&
+      !activeId.startsWith("start") &&
+      !activeId.startsWith("wizard")
+    ) {
+      progress.setLast(activeId);
+    }
   }, [activeId]);
 
   // Keyboard shortcuts: "/" to open search, "j/k" for next/prev
@@ -121,6 +129,7 @@ export default function App() {
   const activeItem = activeId ? getItem(activeId) : undefined;
   const readCount = Object.keys(snap.read).length;
   const isDecisionTree = activeId === "start" || activeId.startsWith("start/");
+  const isBuildersRoute = activeId === "builders" || activeId.startsWith("builders/");
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -161,6 +170,8 @@ export default function App() {
         <main className="flex-1 min-w-0 px-4 sm:px-8 lg:px-12 py-8">
           {isDecisionTree ? (
             <DecisionTree />
+          ) : isBuildersRoute ? (
+            <Builders />
           ) : !activeId || !activeItem ? (
             <Welcome
               readCount={readCount}

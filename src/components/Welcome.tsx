@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, Map, Sparkles, Target } from "lucide-react";
+import { ArrowRight, BookOpen, Map, Sparkles, Target, Wrench } from "lucide-react";
 import { CATEGORIES, TOTAL_ITEMS } from "../manifest";
 
 interface Props {
@@ -83,6 +83,30 @@ export default function Welcome({
         </span>
         <ArrowRight className="shrink-0 w-5 h-5 text-brand-600 dark:text-brand-300
                                 group-hover:translate-x-0.5 transition-transform" />
+      </a>
+
+      {/* FEATURE: config-builders */}
+      <a
+        href="#builders"
+        className="group mt-3 flex items-start gap-4 p-5 rounded-xl
+                   border border-zinc-200 dark:border-zinc-800
+                   bg-white dark:bg-zinc-900
+                   hover:border-brand-400 dark:hover:border-brand-500
+                   hover:shadow-md transition-all no-underline"
+      >
+        <div className="shrink-0 mt-0.5 p-2 rounded-lg bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-300">
+          <Wrench className="w-5 h-5" />
+        </div>
+        <div className="flex-1">
+          <div className="font-semibold text-zinc-900 dark:text-zinc-50 group-hover:text-brand-500">
+            Config builders
+          </div>
+          <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+            Visual editors for hooks, skills, settings, and slash-commands.
+            Form → JSON/Markdown.
+          </div>
+        </div>
+        <ArrowRight className="w-4 h-4 text-zinc-400 group-hover:text-brand-500 mt-1" />
       </a>
 
       <div className="mt-6 grid sm:grid-cols-3 gap-3">
