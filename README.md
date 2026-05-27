@@ -55,6 +55,19 @@ cd raw-docs && cat urls.txt | xargs -n1 -P8 ./download.sh
 
 Vite + React 19 + Tailwind v4 + react-markdown + remark-gfm + rehype-raw + Fuse.js.
 
+## Decision tree — "I want to…"
+
+A non-linear entry at `#start`. Pick a goal from 12 cards (use Claude daily, review
+PRs, run in CI, build an SDK agent, MCP, IDE, team workflows, big codebase, policy
+enforcement, enterprise, background tasks, just exploring) and you get:
+
+- 3-5 hand-picked docs to read first, with a one-line "why" for each
+- A link to the setup wizard if it fits
+- Links to the relevant config builders (hook / skill / settings / slash-command)
+
+Lives under `src/decision-tree/`. Use cases are data in `src/decision-tree/useCases.ts` —
+each `doc.id` is cross-checked against `src/manifest.ts`.
+
 ## License
 
 Documentation content is © Anthropic, under their terms. The tour shell (code in this repo) is MIT.

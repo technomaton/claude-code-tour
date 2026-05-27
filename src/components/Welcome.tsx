@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, Map, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpen, Map, Sparkles, Target } from "lucide-react";
 import { CATEGORIES, TOTAL_ITEMS } from "../manifest";
 
 interface Props {
@@ -58,7 +58,34 @@ export default function Welcome({
         )}
       </div>
 
-      <div className="mt-10 grid sm:grid-cols-3 gap-3">
+      {/* FEATURE: decision-tree — non-linear entry. The most prominent CTA. */}
+      <a
+        href="#start"
+        className="mt-10 flex items-center gap-4 p-5 rounded-xl
+                   border-2 border-brand-400 dark:border-brand-700
+                   bg-brand-50 dark:bg-brand-900/20
+                   hover:bg-brand-100 dark:hover:bg-brand-900/30
+                   hover:border-brand-500 dark:hover:border-brand-500
+                   transition-colors group"
+      >
+        <span className="shrink-0 w-12 h-12 rounded-full
+                         bg-brand-500 text-white
+                         inline-flex items-center justify-center">
+          <Target className="w-6 h-6" />
+        </span>
+        <span className="flex-1">
+          <span className="block font-semibold text-zinc-900 dark:text-zinc-50">
+            Where do I start?
+          </span>
+          <span className="block text-sm text-zinc-700 dark:text-zinc-300 mt-0.5">
+            Tell us your goal — we'll show the right docs, wizard step, and config builders.
+          </span>
+        </span>
+        <ArrowRight className="shrink-0 w-5 h-5 text-brand-600 dark:text-brand-300
+                                group-hover:translate-x-0.5 transition-transform" />
+      </a>
+
+      <div className="mt-6 grid sm:grid-cols-3 gap-3">
         <Stat icon={<BookOpen className="w-4 h-4" />} value={String(TOTAL_ITEMS)} label="Doc pages" />
         <Stat icon={<Map className="w-4 h-4" />} value={String(CATEGORIES.length)} label="Sections" />
         <Stat icon={<Sparkles className="w-4 h-4" />} value={`${readCount}`} label="Read so far" />
