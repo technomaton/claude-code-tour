@@ -10,6 +10,7 @@ import Markdown from "./components/Markdown";
 import TourNav from "./components/TourNav";
 import SearchOverlay from "./components/SearchOverlay";
 import Welcome from "./components/Welcome";
+import Wizard from "./wizard/Wizard";
 
 // Build the search index once on module load
 buildIndex(allRaw(), SLUG_TO_ID);
@@ -119,6 +120,7 @@ export default function App() {
 
   const activeItem = activeId ? getItem(activeId) : undefined;
   const readCount = Object.keys(snap.read).length;
+  const isWizard = activeId === "wizard" || activeId.startsWith("wizard/");
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -157,7 +159,9 @@ export default function App() {
 
         {/* Main */}
         <main className="flex-1 min-w-0 px-4 sm:px-8 lg:px-12 py-8">
-          {!activeId || !activeItem ? (
+          {isWizard ? (
+            <Wizard />
+          ) : !activeId || !activeItem ? (
             <Welcome
               readCount={readCount}
               lastItemId={snap.lastItemId}

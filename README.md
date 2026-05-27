@@ -55,6 +55,26 @@ cd raw-docs && cat urls.txt | xargs -n1 -P8 ./download.sh
 
 Vite + React 19 + Tailwind v4 + react-markdown + remark-gfm + rehype-raw + Fuse.js.
 
+## Setup wizard
+
+A guided 7-step flow at `#wizard` that produces a downloadable starter
+`.claude/` config tailored to your project:
+
+1. **Intro** — pick your OS
+2. **Install** — the exact install command for your OS, with a Copy button
+3. **First session** — `cd` + `claude` walkthrough
+4. **CLAUDE.md** — form (project type, languages, package manager, commands,
+   conventions) with **live markdown preview**
+5. **settings.json** — model radio, Bash allow/deny lists, hooks toggles,
+   env vars, with **live JSON preview**
+6. **Extras** — optional `/review` slash-command
+7. **Done** — one-click download of `claude-starter.zip` (CLAUDE.md +
+   `.claude/settings.json` + `.claude/commands/review.md`)
+
+State is persisted to `localStorage` (`cct-wizard-v1`) so you can resume.
+ZIP generation uses [jszip](https://stuk.github.io/jszip/) entirely
+client-side — no server, no upload.
+
 ## License
 
 Documentation content is © Anthropic, under their terms. The tour shell (code in this repo) is MIT.
